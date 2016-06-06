@@ -1,0 +1,131 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}ЗАО АТМ-Сервис{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% block css %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Your stuff: Third-party css libraries go here -->
+
+    <!-- This file store project specific CSS -->
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="head-col">
+            <img src="http://placehold.it/150x80?text=Логотип 150x80">
+          </div>
+          <div class="head-col">
+            ЗАО "АТМ-Сервис"<br>
+            <span>Полный цикл создания АСУ ТП<br>и систем электрообогрева</span>
+          </div>
+        </div>
+
+        <div class="col-md-5 hidden-xs hidden-sm" style="text-align:right">
+          <h3>+7(846)279-45-70</h3>
+          mail@atm-servis.ru
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-inverse noradius">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Услуги <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">АСУТП</a></li>
+                <li><a href="#">Электрообогрев</a></li>
+                <li><a href="#">Поставка оборудования</a></li>
+              </ul>
+            </li>
+                    
+            <li><a href="#about">Проекты</a></li>
+            <li><a href="{% url 'customers' %}">Заказчики</a></li>
+            <li><a href="{% url 'sertificates' %}">Сертификаты</a></li>
+            <li><a href="#about">Компания</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+
+      {% block content %}
+        <p>Use this document as a way to quick start any new project.</p>
+      {% endblock content %}
+
+    </div> <!-- /container -->
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+                <p class="text-muted">© 1996-2016 ЗАО "АТМ-Сервис"<br>Спокойный среди бурь.</p>
+          </div>
+          <div class="col-md-4 hidden-xs hidden-sm">
+              
+          </div>
+          <div class="col-md-4 hidden-xs hidden-sm">
+          Тел. +7(846)279-45-70, e-mail: mail@atm-servis.ru 
+          443013 г. Самара, Московское шоссе, 4 строение 9, офис 501 (5 этаж)
+          </div>
+        </div>  
+      </div>
+    </footer>
+
+    {% block modal %}{% endblock modal %}
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block javascript %}
+    
+    <!-- Latest JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    {% endblock javascript %}
+
+  </body>
+</html>
+ 

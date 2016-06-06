@@ -1,0 +1,5 @@
+[run]
+include = atm_s_ru_project/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin

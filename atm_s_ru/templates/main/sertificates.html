@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	
+	<div>
+		<h3>Сертификаты</h3>
+	</div>
+
+
+    <app-sertificates>
+        Загрузка...
+    </app-sertificates>
+
+{% endblock content %}
+
+
+{% block javascript %}
+	
+	{{ block.super }}
+
+    <!-- 1. Load libraries -->
+     <!-- Polyfill(s) for older browsers -->
+    <script src="{% static 'js/ng2/node_modules/es6-shim/es6-shim.min.js' %}"></script>
+
+    <script src="{% static 'js/ng2/node_modules/zone.js/dist/zone.js' %}"></script>
+    <script src="{% static 'js/ng2/node_modules/reflect-metadata/Reflect.js' %}"></script>
+    <script src="{% static 'js/ng2/node_modules/systemjs/dist/system.src.js' %}"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="{% static 'js/ng2/systemjs.config.js' %}"></script>
+    <script>
+      System.import('app-sertificates').catch(function(err){ console.error(err); });
+    </script>
+
+
+{% endblock javascript %}
