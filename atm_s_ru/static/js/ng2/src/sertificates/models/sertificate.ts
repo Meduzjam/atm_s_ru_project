@@ -21,6 +21,10 @@ export class SertificateModel {
 		return "all good";
     }
 
+    isCurrent(cur: SertificateModel) {
+		return this == cur? " active":"";
+    }
+
 }
 
 interface ISertificateModel {

@@ -5,26 +5,28 @@ import { SertificateModel } from '../models/sertificate';
 
 @Component({
 	selector: 'sertificates',
-	directives: [SertificateItemRender],
+	directives: [],
 	template: `
-		<button (click)="getSertificates()">Обновить</button>
-		<button (click)="LogClick()">Лог</button>
 
-		<ul>
-		  <li *ngFor="let sertificate of sertificates" (click)="setCurrentSertificate(sertificate)">
-		    <sertificate-item-render [sertificate]="sertificate"></sertificate-item-render>
-		  </li>
-		</ul>
+	  <div class="row">
 
+		<div class="col-lg-3 list-group">
+		  <a href="#" class="list-group-item{{sertificate.isCurrent(currentSertificate)}}" *ngFor="let sertificate of sertificates" (click)="setCurrentSertificate(sertificate)">
+		    {{sertificate.Title}}
+		  </a>
+		</div>
 
-        <div *ngIf="currentSertificate">
-          <h2>Детали о сертефикате: {{currentSertificate.Title}}</h2>
-          <div>
-            <label>id: </label>{{currentSertificate.id}}
+        <div class="col-lg-9">
+          <div *ngIf="currentSertificate">
+            <a href="#" class="thumbnail">
+              <img style=""src="{{currentSertificate.File}}">
+            </a>
           </div>
         </div>
 
-		<div *ngIf="error">{{error.status}}</div>
+	  </div>
+
+	  <div class="row" *ngIf="error" class="alert alert-danger" role="alert">{{error.status}}</div>
 
 	`
 })
@@ -37,7 +39,8 @@ export class Sertificates implements OnInit {
 	constructor(public sertificatesService: SertificatesService) { }
 
 	getSertificates() {
-
+		this.sertificates = [];
+		this.currentSertificate = null;
 		this.error = null;
 
 		this.sertificatesService
