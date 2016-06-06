@@ -5,7 +5,7 @@ import { SertificateModel } from '../models/sertificate';
 
 @Component({
 	selector: 'sertificates',
-	directives: [],
+	directives: [SertificateItemRender],
 	template: `
 
 	  <div class="row">
@@ -17,11 +17,7 @@ import { SertificateModel } from '../models/sertificate';
 		</div>
 
         <div class="col-lg-9">
-          <div *ngIf="currentSertificate">
-            <a href="#" class="thumbnail">
-              <img style=""src="{{currentSertificate.File}}">
-            </a>
-          </div>
+          <sertificate-item-render [sertificate]="currentSertificate"></sertificate-item-render>
         </div>
 
 	  </div>
