@@ -10,10 +10,12 @@ import { SertificateModel } from '../models/sertificate';
 
 	  <div class="row">
 
-		<div class="col-lg-3 list-group">
-		  <a href="#" class="list-group-item{{sertificate.isCurrent(currentSertificate)}}" *ngFor="let sertificate of sertificates" (click)="setCurrentSertificate(sertificate)">
-		    {{sertificate.Title}}
-		  </a>
+		<div class="col-lg-3">
+		  <div class="list-group">
+		    <a href="#" class="list-group-item{{sertificate.isCurrent(currentSertificate)}}" *ngFor="let sertificate of sertificates" (click)="setCurrentSertificate(sertificate)">
+		      {{sertificate.Title}}
+		    </a>
+		  </div>
 		</div>
 
         <div class="col-lg-9">
